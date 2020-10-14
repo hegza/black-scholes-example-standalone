@@ -30,26 +30,26 @@
 2. Download or clone the example use case: https://github.com/hegza/black-scholes-example-standalone
 
 
-## Part 2: Try the original code, generate the dataset and run the transpiler
+## Part 2: Generate the dataset, try the original code, and run the transpiler
 1. Switch to the example repository (`cd ../black*`).
-2. Run `python3 generate-dataset.py`. Python 2 may work as well.
-3. Try the original code:
+2. Run `python3 generate-dataset.py` to generate the data for 9 million stock options. Python 2 may work as well. This will take a few seconds.
+3. Try the original Python code in the "black-scholes" directory:
 	* `cd black-scholes`
-	* `python3 __init__.py`, this should take a few seconds.
+	* `python3 __init__.py`, this should take a few seconds. It will then print out the time it took to do the calculations using NumPy and SciPy.
 4. Run the tool to transpile the Python source:
-	* `cd ..`
+	* Switch back to the example directory: `cd ..`
 	* Run the tool with `black-scholes` directory as input, and `transpiled` as output:
 	* `serpent tp black-scholes -o transpiled --emit-manifest`
-	* This will create a directory "transpiled".
+	* This will create a directory "transpiled" with the transpiled Rust source code.
 
 
 ## Part 3: Fix the rest with help from the compiler
 - Switch to the Rust project directory: `cd transpiled`
-- Fix remaining compiler errors Rust project by repeatedly running `cargo check`. The errors and fixes are listed below from first to last.
-- When in doubt, run `cargo check`!
+- Fix remaining compiler errors Rust project by repeatedly running `cargo check`.
+- `cargo check` should emit errors in the order shown below. We'll be fixing them one-by-one, you can verify progress by seeing that the top-most error has changed to the one in the next step. When in doubt, run `cargo check`!
 
 1. error[E0425]: cannot find value `si` in this scope
-    * We need to replace the scipy functionality with our own. We'll use the `statrs` library.
+    * We have not provided a replacement mapping for scipy. We need to replace the scipy functionality with a custom implementation own. We'll use the `statrs` library for a cumulative distribution function.
     * Add to the top of the file in "src/black_scholes.rs":
         `use statrs::distribution::{Normal, Univariate};`
     * Then replace the 4 instances of:
