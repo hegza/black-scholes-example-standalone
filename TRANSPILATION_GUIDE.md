@@ -11,14 +11,15 @@
 	* (Linux) from package management, eg. `sudo apt-get install python3` on most debian systems.
 3. Install required Python dependencies: `pip3 install numpy csv pandas scipy`
 4. Install Rust: https://rustup.rs/
-5. Linux / WSL only:
-	* Install Valgrind and libssh eg. `sudo apt-get install valgrind libssh-dev` on most debian systems.
+5. (Linux / WSL only) install libssh and Valgrind:
+	* eg. `sudo apt-get install libssh-dev valgrind` on most debian systems.
 
 ## Part 1: Get the resources
 1. Clone and compile the CLI:
     * `git clone https://github.com/hegza/serpent-cli`
-    * `cargo install --path .`
-2. Download or clone the eaxmple use case: https://github.com/hegza/black-scholes-example-standalone
+	* `cd serpent-cli`
+	* Compile and install the CLI: `cargo install --path .`
+2. Download or clone the example use case: https://github.com/hegza/black-scholes-example-standalone
 
 ## Part 1: Generate code and dataset
 - Run `python3 generate-dataset.py`
