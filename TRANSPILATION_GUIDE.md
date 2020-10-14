@@ -42,13 +42,13 @@
 	* `serpent tp black-scholes -o transpiled --emit-manifest`
 	* This will create a directory "transpiled".
 
+
 ## Part 3: Fix the rest with help from the compiler
 - Switch to the Rust project directory: `cd transpiled`
 - Fix remaining compiler errors Rust project by repeatedly running `cargo check`. The errors and fixes are listed below from first to last.
 - When in doubt, run `cargo check`!
 
-1. In Cargo.toml, search for the "[package]" key, and add edition = "2018" under it
-2. error[E0425]: cannot find value `si` in this scope
+1. error[E0425]: cannot find value `si` in this scope
     * We need to replace the scipy functionality with our own. We'll use the `statrs` library.
     * Add to the top of the file in "src/black_scholes.rs":
         `use statrs::distribution::{Normal, Univariate};`
@@ -57,7 +57,7 @@
     * with:
         `Normal::new(0.0, 1.0).unwrap().cdf(-d2)`
     * d2 varies between the four calls to this new function: -d2, -d1, d1, d2
-3. error[E0425]: cannot find value `pd` in this scope
+2. error[E0425]: cannot find value `pd` in this scope
     * The transpiler can't figure out what to do with inputs. We need to replace the input processing with our own implementation.
     1. In `src/main.rs`, remove the input re-structuring code on lines 9--22.
     2. replace it with:
@@ -75,12 +75,12 @@
         sigma.push(record[4]);
     }
     ```
-4. expected function, found macro `print`
+3. expected function, found macro `print`
     * Our mapping of print is partial. We can fix it by following compiler instructions.
     * Then we need to convert it to use format strings like so:
     `print!("Calculating put and call for {} options took {} seconds", n, duration);`
     * Convert the duration to seconds `duration.as_secs_f64()`
-5. Then move the euro_vanilla calls into a new loop, and the timers outside of the loop, like so:
+4. Then move the euro_vanilla calls into a new loop, and the timers outside of the loop, like so:
     ```
     let start_time = std::time::Instant::now();
     for i in 0..n {
@@ -89,11 +89,11 @@
     }
     let duration = std::time::Instant::now() - start_time;
     ```
-6. error[E0121]: the type placeholder `_` is not allowed within types on item signatures
+5. error[E0121]: the type placeholder `_` is not allowed within types on item signatures
 	* The Python code did not have type ascriptions, and the transpiler had to use a placeholder type.
     * We replace the placeholders like `_` in "src/black_scholes.rs" function signatures with the double-precision floating point type: `f64`. It's safest to use "find & replace" and "match by word" to avoid underscores in other names. In short, replace all `_` in signatures with `f64`.
     * Let's also add the missing return value for the functions: `pub fn .. -> f64 {`
-7. If you're still stuck, you can stash current changes and checkout the pre-transpiled code `git stash && git checkout final`.
+6. If you're still stuck, you can stash current changes and checkout the pre-transpiled code `git stash && git checkout final`.
 
 
 ## Part 4: Benchmark & Profile
