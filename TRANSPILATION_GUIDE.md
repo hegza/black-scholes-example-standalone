@@ -1,7 +1,7 @@
 ## Part 0: Preparation
 - Recommended: install an editor with syntax highlight, one of: vim, vscode, notepad++.
 1.
-	* (Windows): Enable and install Windows Subsystem for Linux: https://docs.microsoft.com/en-us/windows/wsl/install-win10. Alternatively, install Git Bash. However, the process is untested on Git Bash and some of the other dependencies may be hard to install.
+	* (Windows): Enable and install Windows Subsystem for Linux: https://docs.microsoft.com/en-us/windows/wsl/install-win10. Alternatively, install Git Bash or Cygwin. However, the process is untested on Git Bash and Cygwin and some of the other dependencies may be hard to install. You might be able to use a Windows Command Prompt, but it's also untested.
 	* Linux machines should be able to use system terminal.
 2. Install Python 3, (Windows) https://www.python.org/downloads/, (Linux) from package management.
 3. Install required Python dependencies: `pip3 install numpy csv pandas scipy`
