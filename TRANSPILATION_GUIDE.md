@@ -27,7 +27,7 @@
 2. Download or clone the example use case: https://github.com/hegza/black-scholes-example-standalone
 
 
-## Part 1: Try the original code, generate the dataset and run the transpiler
+## Part 2: Try the original code, generate the dataset and run the transpiler
 1. Switch to the example repository (`cd ../black*`).
 2. Run `python3 generate-dataset.py`
 3. Try the original code:
@@ -38,7 +38,7 @@
 	* Run the tool with `black-scholes` directory as input, and `transpiled` as output:
 	* `serpent tp black-scholes -o transpiled --emit-manifest`
 
-## Part 2: Fix the rest with help from the compiler
+## Part 3: Fix the rest with help from the compiler
 - Fix remaining compiler errors Rust project by repeatedly running `cargo check`. The errors and fixes are listed below from first to last.
 
 1. Cargo.toml: edition = "2018"
@@ -90,7 +90,7 @@
     * Let's also add the missing return value for the functions: `pub fn .. -> f64`
 
 
-## Part 3: Benchmark & Profile
+## Part 4: Benchmark & Profile
 0. Calculate the amount of data: (5x 9000000 for inputs + 2x 9000000 for outputs) * 8 bytes = 0.504 GB
 1. Run Rust with `cargo run --release`. Running without `release` will be 50 times slower.
 2. valgrind --tool=massif python3 __init__.py
