@@ -32,7 +32,7 @@
 
 ## Part 2: Try the original code, generate the dataset and run the transpiler
 1. Switch to the example repository (`cd ../black*`).
-2. Run `python3 generate-dataset.py`
+2. Run `python3 generate-dataset.py`. Python 2 may work as well.
 3. Try the original code:
 	* `cd black-scholes`
 	* `python3 __init__.py`, this should take a few seconds.
@@ -109,4 +109,5 @@
     * runs for a minute on my computer
 	* `ms_print massif.out.* | less`
     * shows a graph as follows: https://puu.sh/GCDxO/f50290774f.png
-	
+
+We should notice around a 10x improvement in speed. Both implementations are single-thread.
