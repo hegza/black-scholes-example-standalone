@@ -18,6 +18,7 @@
 6. Optional: Install valgrind:
 	* (WSL / Linux) sudo apt-get install valgrind` on most debian systems.
 
+
 ## Part 1: Get the resources
 1. Clone and compile the command line interface (CLI):
     * `git clone https://github.com/hegza/serpent-cli`
@@ -25,12 +26,21 @@
 	* Compile and install the CLI: `cargo install --path .`
 2. Download or clone the example use case: https://github.com/hegza/black-scholes-example-standalone
 
-## Part 1: Generate code and dataset
+
+## Part 1: Try the original code, generate the dataset and run the transpiler
 1. Switch to the example repository (`cd ../black*`).
 2. Run `python3 generate-dataset.py`
+3. Try the original code:
+	* `cd black-scholes`
+	* `python3 __init__.py`, this should take a few seconds.
+4. Run the tool to transpile the Python source:
+	* `cd ..`
+	* Run the tool with `black-scholes` directory as input, and `transpiled` as output:
+	* `serpent tp black-scholes -o transpiled --emit-manifest`
 
 ## Part 2: Fix the rest with help from the compiler
-- Run `cargo run` and fixed based on compiler output
+- Fix remaining compiler errors Rust project by repeatedly running `cargo check`. The errors and fixes are listed below from first to last.
+
 1. Cargo.toml: edition = "2018"
 2. cannot find value `si` in this scope (black_scholes.rs)
     * We need to replace the scipy functionality with our own. We'll use the `statrs` library.
@@ -78,6 +88,7 @@
 6. the type placeholder `_` is not allowed within types on item signatures    * The Python code did not have type ascriptions, so the transpiler had to use a placeholder.
     * We replace the placeholders with f64.
     * Let's also add the missing return value for the functions: `pub fn .. -> f64`
+
 
 ## Part 3: Benchmark & Profile
 0. Calculate the amount of data: (5x 9000000 for inputs + 2x 9000000 for outputs) * 8 bytes = 0.504 GB
