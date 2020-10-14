@@ -1,7 +1,7 @@
 import numpy as np
 import csv
 
-n = 9_000_000
+n = 9000000
 
 S = np.random.rand(n) * 50 + 25
 K = np.random.rand(n) * 100 + 50
