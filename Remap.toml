@@ -1,0 +1,15 @@
+[dependencies]
+statrs = "0.13.0"
+csv = "1.1.3"
+
+[numpy.log]
+remap = "call f64::ln"
+
+[numpy.sqrt]
+remap = "call f64::sqrt"
+
+[numpy.exp]
+remap = "call f64::exp"
+
+[time.time]
+remap = "call std::time::Instant::now"
