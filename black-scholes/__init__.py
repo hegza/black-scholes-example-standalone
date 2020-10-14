@@ -1,14 +1,14 @@
 # External imports
 import numpy as np
 import csv
-import pandas
+import pandas as pd
 import time
 
 from black_scholes import euro_vanilla_put, euro_vanilla_call
 
 
 def main():
-    dataset = pd.read_csv('dataset.csv', sep=',', header=None).to_numpy()
+    dataset = pd.read_csv('../dataset.csv', sep=',', header=None).to_numpy()
     
     n = dataset.shape[0]
     S = dataset[:,0]
