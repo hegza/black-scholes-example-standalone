@@ -62,7 +62,7 @@
     1. In `src/main.rs`, remove the input re-structuring code on lines 9--22.
     2. replace it with:
     ```
-    let csv = std::fs::read_to_string("dataset.csv").expect("cannot input csv");
+    let csv = std::fs::read_to_string("../dataset.csv").expect("cannot input csv");
     let mut reader = csv::ReaderBuilder::new().has_headers(false).from_reader(csv.as_bytes());
     let n = reader.records().count();
     let (mut S, mut K, mut T, mut r, mut sigma) = (vec![0.; n], vec![0.; n], vec![0.; n], vec![0.; n], vec![0.; n]);
@@ -98,12 +98,15 @@
 ## Part 4: Benchmark & Profile
 0. Calculate the theoretical amount of data used by the program:
 	* (5x 9000000 for inputs + 2x 9000000 for outputs) * 8 bytes = 0.504 GB
-1. Run Rust with `cargo run --release`. Running without `release` will be 50 times slower.
-2. valgrind --tool=massif python3 __init__.py
-    * runs for a minute on my computer
-3. ms_print massif.out.* | less
+1. Compile and run the program with `cargo run --release`. Running without `release` will be 50 times slower.
+2. We can now compare implementation details with valgrind:
+	* valgrind the Rust implementation: `valgrind --tool=massif target/release/main`, runs for about 30 seconds on my computer
+	* ms_print massif.out.* | less
     * shows a graph up to 1.106 GB memory consumption: https://puu.sh/GCDDo/df8e19a66a.png
-4. valgrind --tool=massif target/release/main
-    * runs for about 30 seconds on my computer
-5. ms_print massif.out.* | less
+3. valgrind the Python implementation
+	* `cd ../black-scholes`
+	* `valgrind --tool=massif python3 __init__.py`
+    * runs for a minute on my computer
+	* ms_print massif.out.* | less
     * shows a graph to 1.140 GB memory consumption: https://puu.sh/GCDxO/f50290774f.png
+	
