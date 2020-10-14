@@ -90,7 +90,7 @@
     ```
 6. error[E0121]: the type placeholder `_` is not allowed within types on item signatures
 	* The Python code did not have type ascriptions, and the transpiler had to use a placeholder.
-    * We replace the placeholders in "src/black_scholes.rs" with the double-precision floating point type: f64.
+    * We replace the placeholders like `_` in "src/black_scholes.rs" function signatures with the double-precision floating point type: `f64`.
     * Let's also add the missing return value for the functions: `pub fn .. -> f64`
 
 
