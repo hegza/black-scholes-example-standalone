@@ -1,8 +1,9 @@
 ## Part 0: Preparation
-- Install Python 3: https://www.python.org/downloads/
+- (Windows only): Consider enabling and installing Windows Subsystem for Linux: https://docs.microsoft.com/en-us/windows/wsl/install-win10. Alternatively, install Git Bash. However, the process is untested on Git Bash and some dependencies may be hard to install.
+- Linux machines should be able to use system terminal.
+- Install Python 3, (Windows) https://www.python.org/downloads/, (Linux) from package management.
 - Install required Python dependencies: `pip3 install numpy csv pandas scipy`
 - Install Rust: https://rustup.rs/
-- Consider enabling and installign Windows Subsystem for Linux: https://docs.microsoft.com/en-us/windows/wsl/install-win10
 - (Linux/WSL only) Install Valgrind: `sudo apt-get install valgrind`
 - Recommended: install an editor with syntax highlight, one of: vim, vscode, notepad++.
 
