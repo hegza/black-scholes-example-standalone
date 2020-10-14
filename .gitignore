@@ -2,4 +2,4 @@ __pycache__/
 *.pyc
 # Ignore massif output
 **/massif.out.*
-target/
+**/target/
