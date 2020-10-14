@@ -77,15 +77,14 @@
 4. expected function, found macro `print`
     * Our mapping of print is partial. We can fix it by following compiler instructions.
     * Then we need to convert it to use format strings like so:
-    `print!("Calculating put and call for {} options took {} seconds", n, duration)`
+    `print!("Calculating put and call for {} options took {} seconds", n, duration);`
     * Convert the duration to seconds `duration.as_secs_f64()`
 5. Then move the euro_vanilla calls into a loop, and the timers outside of the loop, like so:
     ```
     let start_time = std::time::Instant::now();
-    for .. {
-        ..
-        euro_vanilla_put(S, K, T, r, sigma);
-        euro_vanilla_call(S, K, T, r, sigma);
+    for i in 0..n {
+        euro_vanilla_put(S[i], K[i], T[i], r[i], sigma[i]);
+        euro_vanilla_call(S[i], K[i], T[i], r[i], sigma[i]);
     }
     let duration = std::time::Instant::now() - start_time;
     ```
