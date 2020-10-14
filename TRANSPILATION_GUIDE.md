@@ -1,17 +1,19 @@
 ## Part 0: Preparation
-- (Windows only): Consider enabling and installing Windows Subsystem for Linux: https://docs.microsoft.com/en-us/windows/wsl/install-win10. Alternatively, install Git Bash. However, the process is untested on Git Bash and some dependencies may be hard to install.
-- Linux machines should be able to use system terminal.
-- Install Python 3, (Windows) https://www.python.org/downloads/, (Linux) from package management.
-- Install required Python dependencies: `pip3 install numpy csv pandas scipy`
-- Install Rust: https://rustup.rs/
-- (Linux/WSL only) Install Valgrind: `sudo apt-get install valgrind`
 - Recommended: install an editor with syntax highlight, one of: vim, vscode, notepad++.
+1.
+	* (Windows): Enable and install Windows Subsystem for Linux: https://docs.microsoft.com/en-us/windows/wsl/install-win10. Alternatively, install Git Bash. However, the process is untested on Git Bash and some of the other dependencies may be hard to install.
+	* Linux machines should be able to use system terminal.
+2. Install Python 3, (Windows) https://www.python.org/downloads/, (Linux) from package management.
+3. Install required Python dependencies: `pip3 install numpy csv pandas scipy`
+4. Install Rust: https://rustup.rs/
+5. Linux / WSL only:
+	* Install Valgrind and libssh eg. `sudo apt-get install valgrind libssh-dev` on most debian systems.
 
 ## Part 1: Get the resources
-- Clone and compile the CLI:
+1. Clone and compile the CLI:
     * `git clone https://github.com/hegza/serpent-cli`
     * `cargo install --path .`
-- TODO: download / install the example use case (TODO: make it into a standalone repo)
+2. Download or clone the eaxmple use case: https://github.com/hegza/black-scholes-example-standalone
 
 ## Part 1: Generate code and dataset
 - Run `python3 generate-dataset.py`
