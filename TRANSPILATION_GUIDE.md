@@ -9,13 +9,16 @@
 2. Install Python 3:
 	* (Windows) https://www.python.org/downloads/. Make sure to have the Python executable on system path. Try `python3` on the chosen terminal to verify.
 	* (Linux) from package management, eg. `sudo apt-get install python3` on most debian systems.
-3. Install required Python dependencies: `pip3 install numpy csv pandas scipy` on terminal
+3. Install required Python dependencies. Python configurations easily break between machines, so we recommend one of the following. If Python dependencies break down the line, try the other one.
+	* (WSL) `pip3 install numpy csv pandas scipy` on terminal
+	* (Linux) `sudo apt-get install python3-pandas python3-numpy`
+	* If you know what's going on, you can future proof by using a virtual environment (conda, venv, venvironment) instead of the options above.
 4. Install Rust: https://rustup.rs/
 5. Install libssh:
 	* (WSL / Linux) `sudo apt-get install libssh-dev` on most debian systems.
 	* (Git Bash) hope that libssh is already installed or try to find an installer on google.
 	* (Cygwin) Use the cygwin management tool to install `libssh-dev`.
-6. Optional: Install valgrind:
+6. Optional: install valgrind:
 	* (WSL / Linux) sudo apt-get install valgrind` on most debian systems.
 
 
@@ -37,8 +40,10 @@
 	* `cd ..`
 	* Run the tool with `black-scholes` directory as input, and `transpiled` as output:
 	* `serpent tp black-scholes -o transpiled --emit-manifest`
+	* This will create a directory "transpiled".
 
 ## Part 3: Fix the rest with help from the compiler
+- Switch to the Rust project directory: `cd transpiled`
 - Fix remaining compiler errors Rust project by repeatedly running `cargo check`. The errors and fixes are listed below from first to last.
 
 1. Cargo.toml: edition = "2018"
