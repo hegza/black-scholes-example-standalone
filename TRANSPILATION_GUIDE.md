@@ -1,9 +1,14 @@
 ## Part 0: Preparation
 - Recommended: install an editor with syntax highlight, one of: vim, vscode, notepad++.
-1.
-	* (Windows): Enable and install Windows Subsystem for Linux: https://docs.microsoft.com/en-us/windows/wsl/install-win10. Alternatively, install Git Bash or Cygwin. However, the process is untested on Git Bash and Cygwin and some of the other dependencies may be hard to install. You might be able to use a Windows Command Prompt, but it's also untested.
-	* Linux machines should be able to use system terminal.
-2. Install Python 3, (Windows) https://www.python.org/downloads/, (Linux) from package management.
+1. Make sure to have some form of a terminal, choose one of the options below:
+	* (Linux) Linux machines should be able to use a system terminal.
+	* (Windows): Enable and install Windows Subsystem for Linux: https://docs.microsoft.com/en-us/windows/wsl/install-win10.
+	* (Windows) Install Git Bash. Untested. Dependencies may be hard to install.
+	* (Windows) Install Cygwin. Untested.
+	* (Windows) You might be able to use a Windows Command Prompt. Untested.
+2. Install Python 3:
+	* (Windows) https://www.python.org/downloads/. Make sure to have the Python executable on system path. Try `python3` on the chosen terminal to verify.
+	* (Linux) from package management, eg. `sudo apt-get install python3` on most debian systems.
 3. Install required Python dependencies: `pip3 install numpy csv pandas scipy`
 4. Install Rust: https://rustup.rs/
 5. Linux / WSL only:
