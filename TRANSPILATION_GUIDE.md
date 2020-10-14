@@ -79,7 +79,7 @@
     * Then we need to convert it to use format strings like so:
     `print!("Calculating put and call for {} options took {} seconds", n, duration);`
     * Convert the duration to seconds `duration.as_secs_f64()`
-5. Then move the euro_vanilla calls into a loop, and the timers outside of the loop, like so:
+5. Then move the euro_vanilla calls into a new loop, and the timers outside of the loop, like so:
     ```
     let start_time = std::time::Instant::now();
     for i in 0..n {
@@ -88,8 +88,9 @@
     }
     let duration = std::time::Instant::now() - start_time;
     ```
-6. the type placeholder `_` is not allowed within types on item signatures    * The Python code did not have type ascriptions, so the transpiler had to use a placeholder.
-    * We replace the placeholders with f64.
+6. error[E0121]: the type placeholder `_` is not allowed within types on item signatures
+	* The Python code did not have type ascriptions, and the transpiler had to use a placeholder.
+    * We replace the placeholders in "src/black_scholes.rs" with the double-precision floating point type: f64.
     * Let's also add the missing return value for the functions: `pub fn .. -> f64`
 
 
