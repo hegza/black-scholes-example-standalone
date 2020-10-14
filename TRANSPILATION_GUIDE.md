@@ -92,8 +92,9 @@
 5. error[E0121]: the type placeholder `_` is not allowed within types on item signatures
 	* The Python code did not have type ascriptions, and the transpiler had to use a placeholder type.
     * We replace the placeholders like `_` in "src/black_scholes.rs" function signatures with the double-precision floating point type: `f64`. It's safest to use "find & replace" and "match by word" to avoid underscores in other names. In short, replace all `_` in signatures with `f64`.
-    * Let's also add the missing return value for the functions: `pub fn .. -> f64 {`
-6. If you're still stuck, you can stash current changes and checkout the pre-transpiled code `git stash && git checkout final`.
+6. error[E0308]: mismatched types
+	* The transpiled did not add the return type. Let's also add the missing return type for the functions using the arrow syntax: `pub fn .. -> f64 {`
+7. The code should compile now. If you're still stuck, you can stash current changes and checkout the pre-transpiled code `git add . && git stash && git checkout final`.
 
 
 ## Part 4: Benchmark & Profile
