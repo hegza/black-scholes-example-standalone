@@ -26,7 +26,8 @@
 2. Download or clone the example use case: https://github.com/hegza/black-scholes-example-standalone
 
 ## Part 1: Generate code and dataset
-- Run `python3 generate-dataset.py`
+1. Switch to the example repository (`cd ../black*`).
+2. Run `python3 generate-dataset.py`
 
 ## Part 2: Fix the rest with help from the compiler
 - Run `cargo run` and fixed based on compiler output
