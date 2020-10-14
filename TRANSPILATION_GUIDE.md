@@ -9,13 +9,17 @@
 2. Install Python 3:
 	* (Windows) https://www.python.org/downloads/. Make sure to have the Python executable on system path. Try `python3` on the chosen terminal to verify.
 	* (Linux) from package management, eg. `sudo apt-get install python3` on most debian systems.
-3. Install required Python dependencies: `pip3 install numpy csv pandas scipy`
+3. Install required Python dependencies: `pip3 install numpy csv pandas scipy` on terminal
 4. Install Rust: https://rustup.rs/
-5. (Linux / WSL only) install libssh and Valgrind:
-	* eg. `sudo apt-get install libssh-dev valgrind` on most debian systems.
+5. Install libssh:
+	* (WSL / Linux) `sudo apt-get install libssh-dev` on most debian systems.
+	* (Git Bash) hope that libssh is already installed or try to find an installer on google.
+	* (Cygwin) Use the cygwin management tool to install `libssh-dev`.
+6. Optional: Install valgrind:
+	* (WSL / Linux) sudo apt-get install valgrind` on most debian systems.
 
 ## Part 1: Get the resources
-1. Clone and compile the CLI:
+1. Clone and compile the command line interface (CLI):
     * `git clone https://github.com/hegza/serpent-cli`
 	* `cd serpent-cli`
 	* Compile and install the CLI: `cargo install --path .`
