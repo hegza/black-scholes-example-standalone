@@ -49,7 +49,7 @@
 - `cargo check` should emit errors in the order shown below. We'll be fixing them one-by-one, you can verify progress by seeing that the top-most error has changed to the one in the next step. When in doubt, run `cargo check`!
 
 1. error[E0425]: cannot find value `si` in this scope
-    * We have not provided a replacement mapping for scipy. We need to replace the scipy functionality with a custom implementation own. We'll use the `statrs` library for a cumulative distribution function.
+    * We have not provided a replacement mapping for scipy. We need to replace the scipy functionality with a custom implementation of our own. We'll use the `statrs` library for a cumulative distribution function.
     * Add to the top of the file in "src/black_scholes.rs":
         `use statrs::distribution::{Normal, Univariate};`
     * Then replace the 4 instances of:
