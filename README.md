@@ -95,7 +95,8 @@
 6. error[E0308]: mismatched types
 	* The transpiler did not add the return type. Let's also add the missing return type for the functions using the arrow syntax, like so:
 	* `pub fn .. -> f64 {`
-7. The code should compile now. If you're still stuck, you can stash current changes and checkout the pre-transpiled code `git add . && git stash && git checkout final`.
+7. The code should compile now. If you're still stuck, you can stash current changes and checkout the pre-transpiled code:
+	* `git add . && git stash && git checkout final`.
 
 
 ## Part 4: Benchmark & Profile
