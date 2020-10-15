@@ -106,12 +106,12 @@
 2. We can now compare the execution details with valgrind:
 	* valgrind the Rust implementation: `valgrind --tool=massif target/release/main`, runs for about 30 seconds on my computer
 	* `ms_print massif.out.* | less`
-    * shows a graph as follows: https://puu.sh/GCDDo/df8e19a66a.png
+    * shows a graph as follows: https://puu.sh/GCDxO/f50290774f.png
 3. valgrind the Python implementation
 	* `cd ../black-scholes`
 	* `valgrind --tool=massif python3 __init__.py`
     * runs for a minute on my computer
 	* `ms_print massif.out.* | less`
-    * shows a graph as follows: https://puu.sh/GCDxO/f50290774f.png
+    * shows a graph as follows: https://puu.sh/GCDDo/df8e19a66a.png
 
 We should notice around a 10x improvement in speed. Both implementations are single-thread. Python uses accelerated NumPy, Rust uses LLVM optimized native execution.
