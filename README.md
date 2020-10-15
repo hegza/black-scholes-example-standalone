@@ -45,7 +45,7 @@
 
 ## Part 3: Fix the rest with help from the compiler
 - Switch to the Rust project directory: `cd transpiled`
-- Fix remaining compiler errors Rust project by repeatedly running `cargo check`.
+- Fix the remaining compiler errors in the Rust project by repeatedly running `cargo check`.
 - `cargo check` should emit errors in the order shown below. We'll be fixing them one-by-one, you can verify progress by seeing that the top-most error has changed to the one in the next step. When in doubt, run `cargo check`!
 
 1. error[E0425]: cannot find value `si` in this scope
