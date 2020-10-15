@@ -114,4 +114,4 @@
 	* `ms_print massif.out.* | less`
     * shows a graph as follows: https://puu.sh/GCDDo/df8e19a66a.png
 
-We should notice around a 10x improvement in speed. Both implementations are single-thread. Python uses accelerated NumPy, Rust uses LLVM optimized native execution.
+We should notice around a 10x improvement in speed, depending on which backend NumPy links against. Both implementations are single-thread, unless NumPy links against a multi-thread backend. Python uses accelerated NumPy, Rust uses LLVM optimized native execution.
