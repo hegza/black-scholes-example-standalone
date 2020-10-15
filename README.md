@@ -100,7 +100,7 @@
 
 
 ## Part 4: Benchmark & Profile
-0. Calculate the theoretical amount of data used by the program:
+0. Calculate the theoretical amount of data used by the program, for reference:
 	* (5x 9000000 for inputs + 2x 9000000 for outputs) * 8 bytes = 0.504 GB
 1. Compile and run the program with `cargo run --release`. Running without `release` will be 50 times slower.
 2. We can now compare the execution details with valgrind:
